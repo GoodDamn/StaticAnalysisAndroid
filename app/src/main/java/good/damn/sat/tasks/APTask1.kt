@@ -4,13 +4,13 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import good.damn.sat.APReceiverPrintMessage
+import good.damn.sat.APReceiverFileOperation
 
 class APTask1(
     private val activity: AppCompatActivity
 ): APITask {
 
-    private val mReceiverСonnected = APReceiverPrintMessage()
+    private val mReceiverСonnected = APReceiverFileOperation()
 
     override fun execute() {
         val appContext = activity.applicationContext
@@ -28,7 +28,7 @@ class APTask1(
                 )
 
                 addAction(
-                    APReceiverPrintMessage.ACTION
+                    APReceiverFileOperation.ACTION
                 )
             },
             ContextCompat.RECEIVER_NOT_EXPORTED
@@ -36,10 +36,10 @@ class APTask1(
 
         appContext.sendBroadcast(
             Intent().putExtra(
-                APReceiverPrintMessage.KEY,
+                APReceiverFileOperation.KEY,
                 "Implicit"
             ).setAction(
-                APReceiverPrintMessage.ACTION
+                APReceiverFileOperation.ACTION
             ).setPackage(
                 activity.packageName
             )
